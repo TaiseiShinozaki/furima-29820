@@ -14,7 +14,7 @@
 | birth_date        | date   | null: false                       |
 ### Association
 
-- belongs_to :payment
+- has_many :payment
 - has_many :items
 - has_many :comments dependent: :destroy
 
@@ -23,8 +23,8 @@
 | Column     | Type       | Options                        |
 | -----------| ---------- | ------------------------------ |
 | comment    | text       | null: false                    |
-| user_id    | reference  | null: false, foreign_key: true |
-| item_id    | reference  | null: false, foreign_key: true |
+| user       | reference  | null: false, foreign_key: true |
+| item       | reference  | null: false, foreign_key: true |
 
 ### Association
 
@@ -35,7 +35,7 @@
 
 | Column             | Type       | Options                         |
 | ------------------ | ---------- | ------------------------------- |
-| user_id            | reference  | null: false, foreign_key:true   |  
+| user               | reference  | null: false, foreign_key:true   |  
 | name               | string     | null: false                     |
 | description        | text       | null: false                     |
 | category_id        | integer    | null: false                     |
@@ -54,12 +54,12 @@
 
 | Column             | Type       | Options                         |
 | ------------------ | ---------- | ------------------------------- |
-| user_id            | reference  | null: false, foreign_key:true   |
+| user               | reference  | null: false, foreign_key:true   |
 | post_code          | string     | null: false                     |  
 | prefecture_id      | integer    | null: false, foreign_key:true   |
 | city               | string     | null: false                     |
 | town               | string     | null: false                     |
-| building_name      | string     | null: false                     |
+| building_name      | string     |                                 |
 | phone_number       | string     | null: false,uniqueness:true     |
 
 ## Association
@@ -69,10 +69,10 @@
 
 | Column             | Type       | Options                         |
 | ------------------ | ---------- | ------------------------------- |
-| user_id            | reference  | null: false, foreign_key:true   |
-| item_id            | reference  | null: false, foreign_key:true   |
+| user               | reference  | null: false, foreign_key:true   |
+| item               | reference  | null: false, foreign_key:true   |
 
 ## Association
-- has_many :addresses
-- has_many :users
+- has_one :address
+- belongs_to :user
 - belongs_to :item
