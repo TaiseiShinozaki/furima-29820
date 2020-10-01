@@ -14,7 +14,7 @@
 | birth_date        | date   | null: false                       |
 ### Association
 
-- has_many :payment
+- has_many :payments
 - has_many :items
 - has_many :comments dependent: :destroy
 
@@ -41,7 +41,7 @@
 | category_id        | integer    | null: false                     |
 | condition_id       | integer    | null: false                     |
 | postage_payer_id   | integer    | null: false                     |
-| prefecture_id      | integer    | null: false                     |
+| prefecture         | integer    | null: false                     |
 | handling_time_id   | integer    | null: false                     |
 | price              | integer    | null: false                     |
 
@@ -54,9 +54,9 @@
 
 | Column             | Type       | Options                         |
 | ------------------ | ---------- | ------------------------------- |
-| user               | reference  | null: false, foreign_key:true   |
+| user_id            | integer    | null: false                     |
 | post_code          | string     | null: false                     |  
-| prefecture_id      | integer    | null: false, foreign_key:true   |
+| prefecture         | integer    | null: false                     |
 | city               | string     | null: false                     |
 | town               | string     | null: false                     |
 | building_name      | string     |                                 |
