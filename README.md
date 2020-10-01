@@ -14,33 +14,22 @@
 | birth_date        | date   | null: false                       |
 ### Association
 
-- has_many : items
-- has_one : addresses dependent: :destroy
-- has_one : credit_cards dependent: :destroy
-- has_many : comments dependent: :destroy
-
-## imagesテーブル
-
-| Column  | Type       | Options                         |
-| --------| ---------- | ------------------------------- |
-| image   | string     | null: false                     |  
-| item_id | references | null: false, foreign_key: true  |
-
-### Association
-
-- belongs_to :items, dependent: :destroy
+- belongs_to :payment
+- has_many :items
+- has_many :comments dependent: :destroy
 
 ## comments テーブル
 
 | Column     | Type       | Options                        |
 | -----------| ---------- | ------------------------------ |
-| text       | text       | null: false                    |
-| user_id    | references | null: false, foreign_key: true |
+| comment    | text       | null: false                    |
+| user_id    | reference  | null: false, foreign_key: true |
+| item_id    | reference  | null: false, foreign_key: true |
 
 ### Association
 
-- belongs_to :items
-- belongs_to :users
+- belongs_to :item
+- belongs_to :user
 
 ## items テーブル
 
@@ -57,10 +46,9 @@
 | price              | integer    | null: false                     |
 
 ## Association
-- belongs_to :users
-- has_many :images dependent: :destroy
-- has_many :comments 
-
+- belongs_to :user
+- has_many :comments
+- has_one :payment
 
 ## addressesテーブル
 
@@ -72,21 +60,19 @@
 | city               | string     | null: false                     |
 | town               | string     | null: false                     |
 | building_name      | string     | null: false                     |
-| phone_number       | integer    | null: false,uniqueness:true     |
+| phone_number       | string     | null: false,uniqueness:true     |
 
 ## Association
-- belongs_to :users
+- belongs_to :payment
 
-## credit_cards テーブル
+## paymentsテーブル
 
 | Column             | Type       | Options                         |
 | ------------------ | ---------- | ------------------------------- |
-| user_id            | reference  | null: false, foreign_key:true   |  
-| number             | integer    | null: false                     |
-| year               | integer    | null: false                     |
-| month              | integer    | null: false                     |
-| cvc                | integer    | null: false                     |
+| user_id            | reference  | null: false, foreign_key:true   |
+| item_id            | reference  | null: false, foreign_key:true   |
 
 ## Association
-- belongs_to :users
-
+- has_many :addresses
+- has_many :users
+- belongs_to :item
