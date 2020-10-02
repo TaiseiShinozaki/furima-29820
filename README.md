@@ -56,7 +56,7 @@
 | ------------------ | ---------- | ------------------------------- |
 | payment            | reference  | null: false, foreign_key:true   |
 | post_code          | string     | null: false                     |  
-| prefecture_id      | integer    | null: false                     |                    |
+| prefecture_id      | integer    | null: false                     |  
 | city               | string     | null: false                     |
 | town               | string     | null: false                     |
 | building_name      | string     |                                 |
@@ -69,7 +69,6 @@
 
 | Column             | Type       | Options                         |
 | ------------------ | ---------- | ------------------------------- |
-| address            | reference  | null: false, foreign_key:true   |
 | user               | reference  | null: false, foreign_key:true   |
 | item               | reference  | null: false, foreign_key:true   |
 
