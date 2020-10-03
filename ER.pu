@@ -1,0 +1,13 @@
+@startuml 
+
+package "testアプリ" {
+    entity "ユーザー" {
+      + userID [PK]
+      ==
+      email
+      password
+      name
+    }
+}
+
+@enduml
