@@ -172,7 +172,11 @@ GEM
     rb-fsevent (0.10.4)
     rb-inotify (0.10.1)
       ffi (~> 1.0)
+<<<<<<< Updated upstream
     regexp_parser (1.8.1)
+=======
+    regexp_parser (1.8.0)
+>>>>>>> Stashed changes
     responders (3.0.1)
       actionpack (>= 5.0)
       railties (>= 5.0)
@@ -272,8 +276,11 @@ DEPENDENCIES
   byebug
   capybara (>= 2.15)
   devise
+<<<<<<< Updated upstream
   factory_bot_rails
   faker
+=======
+>>>>>>> Stashed changes
   jbuilder (~> 2.7)
   listen (>= 3.0.5, < 3.2)
   mysql2 (>= 0.4.4)
