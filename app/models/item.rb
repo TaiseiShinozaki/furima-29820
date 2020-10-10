@@ -4,7 +4,7 @@ class Item < ApplicationRecord
   belongs_to_active_hash :condition
   belongs_to_active_hash :postage_payer
   belongs_to_active_hash :prefecture
-  belongs_to_active_hash :hadling_time
+  belongs_to_active_hash :handling_time
 
   validates :category, :condition, :postage_payer, :prefecture, :handling_time, presence: true
 
