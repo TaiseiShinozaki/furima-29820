@@ -5,8 +5,9 @@ class Item < ApplicationRecord
   belongs_to_active_hash :postage_payer
   belongs_to_active_hash :prefecture
   belongs_to_active_hash :handling_time
+  has_one_attached :image
 
-  validates :category, :condition, :postage_payer, :prefecture, :handling_time, presence: true
+  validates :category_id, :condition_id, :postage_payer_id, :prefecture_id, :handling_time_id, presence: true
 
-  validates :category, :condition, :postage_payer, :prefecture, :handling_time, numericality: { other_than: 1 }
+  validates :category_id, :condition_id, :postage_payer_id, :prefecture_id, :handling_time_id, numericality: { other_than: 1 }
 end
