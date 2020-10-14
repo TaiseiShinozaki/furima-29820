@@ -73,8 +73,14 @@ RSpec.describe Item, type: :model do
         expect(@item.errors.full_messages).to include("Price is not a number")
       end
 
-      it "priceが300円から9,999,999円の間以外では登録できない事" do
+      it "priceが300円未満では登録できない事" do
         @item.price = 299
+        @item.valid?
+        expect(@item.errors.full_messages).to include("Price Out of setting range")
+      end
+    
+      it "priceが10,000,000円以上だと登録できない事" do
+        @item.price = 10000000
         @item.valid?
         expect(@item.errors.full_messages).to include("Price Out of setting range")
       end
