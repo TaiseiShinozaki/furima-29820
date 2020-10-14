@@ -17,5 +17,5 @@ class Item < ApplicationRecord
   validates :price, presence: true
   validates :price, :numericality => {:only_integer => true }
   # validates :price, :numericality => {:greater_than_or_equal_to => 300, :message => 'Price Out of setting range'} #validatesを二つに分ける方法もある
-  validates :price, :numericality => {:greater_than_or_equal_to => 300, :less_than_or_equal_to => 9_999_999, :message => 'Price Out of setting range'}
+  validates :price, :numericality => {:greater_than_or_equal_to => 300, :less_than_or_equal_to => 9_999_999, :message => 'Out of setting range'}
 end
