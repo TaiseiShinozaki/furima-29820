@@ -17,7 +17,6 @@
       <%= link_to image_tag("dl-android.png", class:"google-btn"), "#" %>
     </div>
   </div>
-  <%# /画面上部の「人生を変えるフリマアプリ」帯部分  %>
 
   <%# FURIMAが選ばれる3つの理由部分 %>
   <div class='select-reason-contents'>
@@ -60,7 +59,6 @@
       </li>
     </ul>
   </div>
-  <%# /FURIMAが選ばれる3つの理由部分 %>
 
   <%# 画面中央の「会員数日本一位」帯部分 %>
   <div class='ad-contents'>
@@ -81,7 +79,6 @@
       <%= link_to image_tag("dl-android.png", class:"google-btn"), "#" %>
     </div>
   </div>
-  <%# /画面中央の「会員数日本一位」帯部分 %>
 
   <%# FURIMAの特徴 %>
   <div class='feature-contents'>
@@ -118,16 +115,14 @@
       </li>
     </ul>
   </div>
-  <%# /FURIMAの特徴 %>
 
-  <%# 商品一覧 %>
   <div class='item-contents'>
     <h2 class='title'>ピックアップカテゴリー</h2>
     <%= link_to '新規投稿商品', "#", class: "subtitle" %>
     
     <ul class='item-lists'>
       <% if @items.present? %>
-      <%# 商品のインスタンス変数になにか入っている場合、中身のすべてを展開できるようにしましょう %>
+      <%# データベースにある全商品の詳細を展開 %>
       <% @items.each do |item| %>
       <li class='list'>
         <%= link_to "#" do %>
@@ -156,8 +151,6 @@
       </li>
       <% end %>
 
-      <%# 商品がない場合のダミー %>
-      <%# 商品がある場合は表示されないようにしましょう %>
       <% else %>
       <li class='list'>
         <%= link_to '#' do %>
