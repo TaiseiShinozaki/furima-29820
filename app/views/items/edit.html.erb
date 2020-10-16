@@ -10,7 +10,7 @@
     <%= form_with model: @item, local: true do |f| %>
 
     <%# インスタンスを渡して、エラー発生時にメッセージが表示されるようにしましょう。%>
-    <%# render 'shared/error_messages', model: f.object %>
+    <%= render 'shared/error_messages', model: f.object %>
 
     <%# 出品画像 %>
     <div class="img-upload">
@@ -137,7 +137,7 @@
 
     <%# 下部ボタン %>
     <div class="sell-btn-contents">
-      <%= f.submit "変更する", class:"sell-btn" %>
+      <%= f.submit "変更する", url: item_path(@item.id), class:"sell-btn" %>
       <%=link_to 'もどる', "#", class:"back-btn" %>
     </div>
   </div>
