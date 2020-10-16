@@ -4,17 +4,19 @@
 <div class="item-show">
   <div class="item-box">
     <h2 class="name">
-      <%= item.name %>
+      <%= @item.name %>
     </h2>
     <div class='item-img-content'>
-      <%= image_tag item.image, class:"item-box-img" %>
+      <%= image_tag @item.image, class:"item-box-img" %>
       <%# 商品が売れている場合は、sold outを表示しましょう %>
-      <div class='sold-out'>
-        <span>Sold Out!!</span>
-      </div>
+        <%# <div class='sold-out'>
+          <span>Sold Out!!</span>
+        </div> %>
     </div>
     <div class="item-price-box">
-      <span class="item-price">円</span>
+      <span class="item-price">
+      ¥ <%= @item.price %>
+      </span>
       <span class="item-postage">
         (税込) 送料込み
       </span>
@@ -28,38 +30,38 @@
     <% end %>
     
     <%# 商品が売れていない場合はこちらを表示しましょう %>
-    <%# if item_sold_out? %>
+    <% if user_signed_in? && current_user.id != @item.user_id %>
     <%= link_to '購入画面に進む', "#" ,class:"item-red-btn"%>
-
+    <% end %>
 
     <div class="item-explain-box">
-      <span><%= description %></span>
+      <span><%= @item.description %></span>
     </div>
     <table class="detail-table">
       <tbody>
         <tr>
           <th class="detail-item">出品者</th>
-          <td class="detail-value"><%=  %></td>
+          <td class="detail-value"><%= @item.user_id %></td>
         </tr>
         <tr>
           <th class="detail-item">カテゴリー</th>
-          <td class="detail-value"><%= @item.category_id %></td>
+          <td class="detail-value"><%= @item.category.name %></td>
         </tr>
         <tr>
           <th class="detail-item">商品の状態</th>
-          <td class="detail-value"><%= @item.condition_id %></td>
+          <td class="detail-value"><%= @item.condition.name %></td>
         </tr>
         <tr>
           <th class="detail-item">配送料の負担</th>
-          <td class="detail-value"><%= @item.postage_payer_id %></td>
+          <td class="detail-value"><%= @item.postage_payer.name %></td>
         </tr>
         <tr>
           <th class="detail-item">発送元の地域</th>
-          <td class="detail-value"><%= @item.prefecture_id %></td>
+          <td class="detail-value"><%= @item.prefecture.name %></td>
         </tr>
         <tr>
           <th class="detail-item">発送日の目安</th>
-          <td class="detail-value"><%= @item.handling_time_id %></td>
+          <td class="detail-value"><%= @item.handling_time.name %></td>
         </tr>
       </tbody>
     </table>
