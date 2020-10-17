@@ -1,5 +1,5 @@
 class ItemsController < ApplicationController
-  before_action :move_to_root_path, except: [:index, :show], unless: :user_signed_in?
+  before_action :move_to_root_path, except: [:index, :show]
   before_action :set_item, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user, only: [:edit, :update, :destroy]
 
@@ -46,7 +46,7 @@ class ItemsController < ApplicationController
   private
   
   def move_to_root_path
-    redirect_to root_path
+    redirect_to root_path if user_signed_in? == false
   end
 
   def item_params
@@ -62,6 +62,6 @@ class ItemsController < ApplicationController
       redirect_to root_path
     end
   end
-  
+
 end
 
