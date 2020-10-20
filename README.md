@@ -14,7 +14,7 @@
 | birth_date        | date   | null: false                       |
 ### Association
 
-- has_many :payments
+- has_many :orders
 - has_many :items
 - has_many :comments dependent: :destroy
 
@@ -48,13 +48,13 @@
 ## Association
 - belongs_to :user
 - has_many :comments
-- has_one :payment
+- has_one :order
 
 ## addressesテーブル
 
 | Column             | Type       | Options                         |
 | ------------------ | ---------- | ------------------------------- |
-| payment            | reference  | null: false, foreign_key:true   |
+| order              | reference  | null: false, foreign_key:true   |
 | post_code          | string     | null: false                     |  
 | prefecture_id      | integer    | null: false                     |  
 | city               | string     | null: false                     |
@@ -63,9 +63,9 @@
 | phone_number       | string     | null: false,uniqueness:true     |
 
 ## Association
-- belongs_to :payment
+- belongs_to :order
 
-## paymentsテーブル
+## ordersテーブル
 
 | Column             | Type       | Options                         |
 | ------------------ | ---------- | ------------------------------- |
