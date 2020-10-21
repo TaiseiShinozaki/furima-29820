@@ -1,13 +1,13 @@
 class OrderAddress
   include ActiveModel::Model
-  attr_accessor :post_code, :prefecture_id, :city, :town, :building_name, :phone_number, :user_id, :item_id
+  attr_accessor :post_code, :prefecture_id, :city, :town, :building_name, :phone_number, :user_id, :item_id, :token
 
-  #PHONE_NUMBER_REGEX = /\A\d{10,11}\z/
+  PHONE_NUMBER_REGEX = /\A\d{10,11}\z/
   with_options presence: true do
-    validates :post_code #format: { with: /\A\d{3}[-]\d{4}\z/, message: 'Input correctly' }
+    validates :post_code, format: { with: /\A\d{3}[-]\d{4}\z/, message: 'Input correctly' }
     validates :city
     validates :town
-    validates :phone_number #format: { with: PHONE_NUMBER_REGEX, message: 'Input only number' }
+    validates :phone_number, format: { with: PHONE_NUMBER_REGEX, message: 'Input only number' }
   end
 
   with_options presence: true do
