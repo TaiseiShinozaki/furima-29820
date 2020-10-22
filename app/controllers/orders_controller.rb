@@ -2,7 +2,8 @@ class OrdersController < ApplicationController
   before_action :set_item
   before_action :authenticate_user
   before_action :authenticate_buyer
-
+  before_action :sold_item
+  
   def index
     @order_address = OrderAddress.new
   end
@@ -49,5 +50,10 @@ class OrdersController < ApplicationController
       redirect_to root_path
     end
   end
- 
+
+  def sold_item
+    if @item.order.present?
+      redirect_to root_path
+    end
+  end
 end
