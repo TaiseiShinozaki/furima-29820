@@ -1,7 +1,8 @@
 class OrdersController < ApplicationController
   before_action :set_item
-  #before_action :authenticate_buyer
-  #before_action :move_to_login_page
+  before_action :authenticate_user
+  before_action :authenticate_buyer
+
   def index
     @order_address = OrderAddress.new
   end
@@ -38,14 +39,15 @@ class OrdersController < ApplicationController
     )
   end
 
-  #def authenticate_buyer
-    #@item = Item.find(params[:item_id])
-    #if @item.user_id == current_user.id
-      #redirect_to root_path
-    #end
-  #end
-
-  #def move_to_login_page
-    #redirect_to new_user_session_path if user_signed_in? == false
-  #end
+  def authenticate_user
+    redirect_to new_user_session_path if user_signed_in? == false  
+  end
+  
+  def authenticate_buyer
+    @item = Item.find(params[:item_id])
+    if @item.user_id == current_user.id
+      redirect_to root_path
+    end
+  end
+ 
 end
