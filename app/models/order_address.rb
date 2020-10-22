@@ -6,15 +6,12 @@ class OrderAddress
   with_options presence: true do
     validates :token
     validates :post_code, format: { with: /\A\d{3}[-]\d{4}\z/, message: 'Input correctly' }
+    validates :prefecture_id, numericality: { other_than: 1 }
     validates :city
     validates :town
     validates :phone_number, format: { with: PHONE_NUMBER_REGEX, message: 'Input only number' }
   end
-
-  with_options presence: true do
-    validates :prefecture_id, numericality: { other_than: 1 }
-  end
-
+  
   def save
     order = Order.create(user_id: user_id, item_id: item_id)
     #住所の情報を保存 #左側がカラムの値
