@@ -10,7 +10,6 @@ class OrdersController < ApplicationController
 
   def create
     @order_address = OrderAddress.new(order_address_params)
-    #binding.pry
     if @order_address.valid?
       pay_item
       @order_address.save   #バリデーションをクリアした時
@@ -45,7 +44,6 @@ class OrdersController < ApplicationController
   end
   
   def authenticate_buyer
-    @item = Item.find(params[:item_id])
     if @item.user_id == current_user.id
       redirect_to root_path
     end
